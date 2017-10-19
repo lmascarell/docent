@@ -86,6 +86,8 @@ SemanticSpaceImplementation<WV> *SemanticSpaceImplementation<WV>::load(const std
 	std::ifstream is(file.c_str());
 	char hdr[4];
 	is.read(hdr, 4);
+        space = SemanticSpaceImplementation<WV>::loadDenseText(is);
+	/***
 	if(std::equal(hdr, hdr + 4, "\000s\0002"))
 		space = SemanticSpaceImplementation<WV>::loadSparseText(is);
 	else if(std::equal(hdr, hdr + 4, "\000s\0000"))
@@ -95,7 +97,7 @@ SemanticSpaceImplementation<WV> *SemanticSpaceImplementation<WV>::load(const std
 		LOG(logger, error, file << ": Unknown sspace file format.");
 		BOOST_THROW_EXCEPTION(FileFormatException());
 	}
-
+	***/
 	is.close();
 	return space;
 }
